@@ -98,7 +98,7 @@ A batch of SQL statements is a group of two or more SQL statements, separated by
 The SQL statement below will return all rows from the "User" table, then delete the "Suppliers" table.
 sql
 
-    SELECT * FROM User; DROP TABLE suppliers
+    SELECT * FROM User; DROP TABLE Suppliers
  
 Look at the following example: 
 
