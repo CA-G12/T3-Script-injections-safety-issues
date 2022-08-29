@@ -41,9 +41,14 @@ When a script language injection vulnerability is located on the client side, th
 
 JS
 
-       const text = "UPDATE users SET info = jsonb_set(info, '{geometry,coordinates}', $1) WHERE id = $2 RETURNING *";
-       
-       const values = [coords, id];
+       const addUser = userData => {
+       const { name, location } = userData;
+       const sql = {
+    text: "INSERT INTO users (name, location) VALUES ($1, $2) returning *;",
+    values: [name, location]
+     };
+     return dbConnection.query(sql);
+     };
 
   - Why we use it?
     One major reason for using parameterized queries is that they make queries more readable. The second and most compelling reason is that parameterized queries help       to protect the database from SQL injection attacks.
