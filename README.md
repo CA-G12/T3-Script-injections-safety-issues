@@ -57,17 +57,23 @@ When a script language injection vulnerability is located on the client side, th
 
 
 ### Using `WHILE(1=1)` or `WHILE(""="")`
+
 JS
-UserId = getRequestString("UserId");
-txtSQL = "SELECT * FROM Users WHERE UserId = " + UserId;
+
+    UserId = getRequestString("UserId");
+    txtSQL = "SELECT * FROM Users WHERE UserId = " + UserId;
+
 Look at the example above again. The original purpose of the code was to create an SQL statement to select a user, with a given user id.
 If there is nothing to prevent a user from entering "wrong" input, the user can enter some "smart" input like this:
 
 <img src="https://i.ibb.co/zxfQn64/Screenshot-from-2022-08-28-23-03-21.png" />
 
 Then, the SQL statement will look like this:
+
 sql
-SELECT * FROM Users WHERE UserId = 105 OR 1=1;
+
+    SELECT * FROM Users WHERE UserId = 105 OR 1=1;
+
 The SQL above is valid and will return ALL rows from the User table, since OR 1=1 is always TRUE.
 
 ### Using batched SQL statements
@@ -76,17 +82,24 @@ A batch of SQL statements is a group of two or more SQL statements, separated by
 
 The SQL statement below will return all rows from the "User" table, then delete the "Orders" table.
 sql
- SELECT * FROM User; DROP TABLE orders 
+
+    SELECT * FROM User; DROP TABLE orders 
  
 Look at the following example: 
+
 JS
-UserId = getRequestString("UserId");
-txtSQL = "SELECT * FROM Users WHERE UserId = " + UserId;
+
+    UserId = getRequestString("UserId");
+    txtSQL = "SELECT * FROM Users WHERE UserId = " + UserId;
+
 And the following input:
 
 <img src="https://i.ibb.co/nQP0Pkw/Screenshot-from-2022-08-28-23-19-11.png" />
 
 The valid SQL statement would look like this:
+
 sql
-SELECT * FROM Users WHERE UserId = 105; DROP TABLE Suppliers;
+
+    SELECT * FROM Users WHERE UserId = 105; DROP TABLE Suppliers;
+
 So the SQL statement above will return all information about Ted from the "User" table, then delete the "Suppliers" table.
