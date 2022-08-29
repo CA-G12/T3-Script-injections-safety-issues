@@ -40,15 +40,19 @@ When a script language injection vulnerability is located on the client side, th
   - A parameterized query is a type of SQL query that requires at least one parameter for execution. A placeholder is normally substituted for the parameter in the SQL     query. The parameter is then passed to the query in a separate statement.
 
 JS
-
-       const addUser = userData => {
-       const { name, location } = userData;
-       const sql = {
+```js
+const addUser = userData => {
+  const { name, location } = userData;
+  const sql = {
     text: "INSERT INTO users (name, location) VALUES ($1, $2) returning *;",
     values: [name, location]
-     };
-     return dbConnection.query(sql);
-     };
+  };
+  return dbConnection.query(sql);
+};
+
+** أحمد صافي مر من هنا **
+```
+
 
   - Why we use it?
     One major reason for using parameterized queries is that they make queries more readable. The second and most compelling reason is that parameterized queries help       to protect the database from SQL injection attacks.
