@@ -57,6 +57,9 @@ const addUser = userData => {
   - Why we use it?
     One major reason for using parameterized queries is that they make queries more readable. The second and most compelling reason is that parameterized queries help       to protect the database from SQL injection attacks.
     
+    
+    
+    
 ### 4- Bad practices in `SQL` and some sampels codes:
 #### Bad Practices:
 - Using `SELECT *`
