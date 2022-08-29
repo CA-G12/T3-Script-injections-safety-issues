@@ -95,10 +95,10 @@ The SQL above is valid and will return ALL rows from the User table, since OR 1=
 
 A batch of SQL statements is a group of two or more SQL statements, separated by semicolons.
 
-The SQL statement below will return all rows from the "User" table, then delete the "Orders" table.
+The SQL statement below will return all rows from the "User" table, then delete the "Suppliers" table.
 sql
 
-    SELECT * FROM User; DROP TABLE orders 
+    SELECT * FROM User; DROP TABLE suppliers
  
 Look at the following example: 
 
